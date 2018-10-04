@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sandbox;
+
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class UserAuthentication3 {
+    public static void main(String[] args){
+        String username = "javaghost";
+        int password = 45;
+        String enteredusername;
+        int enteredpassword;
+        boolean usernamesequal;
+        boolean passwordsequal;
+        String correctpassword = "restricted information";
+        int maxattempts = 5;
+        int numberattempt = 0;
+        final int UPPER_END_OF_RANGE = 95404;
+        
+        while (numberattempt < maxattempts){
+        Scanner userInputScanner = new Scanner(System.in);
+        System.out.println("Enter your password followed by enter:");
+        Random randGenerator = new Random();
+        int randNum = randGenerator.nextInt(UPPER_END_OF_RANGE);
+        enteredpassword = randNum;
+        System.out.println(randNum);
+        if (password == enteredpassword){
+        System.out.println(correctpassword);
+        break;
+        } else {
+            numberattempt = numberattempt + 1;
+            System.out.println("You have used " + numberattempt + " attempts of " +maxattempts+ " allowed attempts at the password. Try again.");
+        }            
+        }
+        if (numberattempt < maxattempts){
+            
+        }else {
+        System.out.println("Maximum number of attempts has been reached. Program terminated.");    
+        }    
+     
+    }
+}
