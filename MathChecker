@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package week5;
+import java.util.Scanner;
+/**
+ *
+ * @author binga
+ */
+public class MathChecker {
+    public static void main(String[] args){
+        int mathanswer = 51;
+        int useranswer; 
+        int numberattempts = 0;
+        System.out.println("** Math Checker **");
+        System.out.println("Compute the value of the following equation: ((5 - 4) * 56 - 5). Type the value and press enter.");
+        System.out.println("You have 3 attempts.");
+        Scanner userinputScanner = new Scanner(System.in);
+        while(numberattempts < 3){
+            
+            useranswer = userinputScanner.nextInt();
+            if (mathanswer == useranswer) {
+            System.out.println("Correct! Nice work!");
+            break;
+            }else{
+                System.out.println("Sorry, incorrect, try again. You have used " + (numberattempts + 1) +" of your 3 attempts.");
+                numberattempts = numberattempts + 1;
+            }//close else after first if
+            if (numberattempts < 3) {    
+            }else{
+            System.out.println("You will never get this right, let me explain. ");
+            System.out.println("You must first evaluate the expression inside the parenthesis. ");
+            System.out.println("(5-4) = 1. ");
+            System.out.println("Now according to order of operations, we must evaluate 1 * 56 = 56. ");
+            System.out.println("Next we evaluate 56 - 5, which equals 51. ");
+            System.out.println("Better luck next time!");
+            }// close else after if
+        }//close while 
+    }//close method
+}//close class
