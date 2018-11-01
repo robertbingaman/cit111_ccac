@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package guts;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class orderTabulator {
+    
+    public static int numBuffChickenPizzas = 0;
+    public static int numBeers = 0;
+    
+    public static void main(String[] args){
+        orderSummary();
+        orderBuffChick();
+        orderBeers();
+        orderSummary();
+    }
+    
+    public static void orderSummary(){
+        System.out.println("***Food Order***");
+        System.out.println("Total Buffalo Chicken Pizza's Ordered: "+numBuffChickenPizzas);
+        System.out.println("Total Beers Ordered: "+numBeers);
+        System.out.println("***************");
+    }
+    
+    public static void orderBeers(){
+        numBeers = numBeers + 2;
+        System.out.println("I will have "+numBeers+" Beers, please.");
+    }
+    
+    public static void orderBuffChick(){
+        numBuffChickenPizzas = numBuffChickenPizzas + 1;
+        System.out.println("I will have "+numBuffChickenPizzas+" Buffalo Chicken Pizzas, please.");
+        
+    }
+    
+}
