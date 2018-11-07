@@ -7,36 +7,219 @@ package guts;
 
 /**
  *
- * @author robert.bingaman
+ * @author binga
  */
-public class orderTabulator {
+
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class OrderTabulator {
     
+    public static final Scanner userinputScanner = new Scanner(System.in);
+       
     public static int numBuffChickenPizzas = 0;
+    public static int numBuffChickenPizzas2 = 0;
+    public static int numBeers2 = 0;
     public static int numBeers = 0;
+    public static int numMargPizzas = 0;
+    public static int numMargPizzas2 = 0;
+    public static int numTenders=0;
+    public static int numTenders2 = 0;
+    public static int numWings = 0;
+    public static int numWings2 = 0;
+    public static int numBurgers = 0;
+    public static int numBurgers2 = 0;
+    public static int numHotDogs = 0;
+    public static int numHotDogs2 = 0;
+    public static int numNachos = 0;
+    public static int numNachos2 = 0;
+    public static int numWaters = 0;
+    public static int numWaters2 = 0;
+    public static int numSodas = 0;
+    public static int numSodas2 = 0;
+    public static double priceBuffChick = 7.99;
+    public static double priceBeer = 3.50;
+    public static double priceMarg = 6.99;
+    public static double priceTender = 5.99;
+    public static double priceWings = 7.99;
+    public static double priceBurger = 7.99;
+    public static double priceHotDog = 3.50;
+    public static double priceNachos = 6.50;
+    public static double priceSoda = 2.25;
+    public static double priceWater = 0;
+    public static double taxRate = 0.07;
+    public static double subTotal;
+    public static double total;
+    public static double tax;
+    public static boolean orderMore = true;
+    public static String useranswer;
+    
+    public static DecimalFormat $ = new DecimalFormat("##.##");
     
     public static void main(String[] args){
         orderSummary();
-        orderBuffChick();
-        orderBeers();
-        orderSummary();
-    }
+        System.out.println("Would you like to order food? (Yes or No)");
+            useranswer = userinputScanner.next();
+            if ("NO".equalsIgnoreCase(useranswer)){                                           
+            orderMore = false;
+            } else {
+            }
+        while(orderMore){
+          System.out.println("What would you like to order?");
+          System.out.println("Please select from the menu below by pressing the corresponding number");
+          System.out.println("1 - Buffalo Chicken Pizza $"+$.format(priceBuffChick));
+          System.out.println("2 - Margherita Pizza $"+ $.format(priceMarg));
+          System.out.println("3 - Chicken Tenders $" +$.format(priceTender));
+          System.out.println("4 - Chicken Wings $"+$.format(priceWings));
+          System.out.println("5 - Burger $"+$.format(priceBurger));
+          System.out.println("6 - Hot Dog $"+$.format(priceHotDog));
+          System.out.println("7 - Nachos $"+$.format(priceNachos));
+          System.out.println("8 - Water $"+$.format(priceWater));
+          System.out.println("9 - Soda $"+$.format(priceSoda));
+          System.out.println("10 - Beer $"+$.format(priceBeer));
+          System.out.println("11 - Show me my current bill");
+          System.out.println("12 - I changed my mind, I do not want any more food.");
+          switch(userinputScanner.nextInt()){
+            case 1: orderBuffChick();
+                break;
+            case 2: orderMargPizza();
+                break;
+            case 3: orderTender();
+                break;
+            case 4: orderWing();
+                break;
+            case 5: orderBurger();
+                break;
+            case 6: orderHotDog();
+                break;
+            case 7: orderNachos();
+                break;
+            case 8: orderWater();
+                break;
+            case 9: orderSoda();
+                break;
+            case 10: orderBeers();
+                break;
+            case 11: if (numBuffChickenPizzas == 0 & numBeers ==0 & numMargPizzas == 0 & numTenders == 0 & numWings == 0 & numBurgers == 0 & numHotDogs == 0 & numNachos == 0 & numWaters == 0 & numSodas == 0){
+                orderSummary();
+                break;
+            } else{
+                orderSummary();
+                displayBill();
+                break;
+            }
+            case 12: break;
+            default: System.out.println("Sorry, I missed that, can you please select again?");
+        }       
+        calcBill();
+        if (numBuffChickenPizzas == 0 & numBeers ==0 & numMargPizzas == 0 & numTenders == 0 & numWings == 0 & numBurgers == 0 & numHotDogs == 0 & numNachos == 0 & numWaters == 0 & numSodas == 0){
+            System.out.println("Would you like to order food? (Yes or No)");
+        } else {
+            System.out.println("Would you like to order more food? (Yes or No)");
+        }
+            useranswer = userinputScanner.next();
+            if ("NO".equalsIgnoreCase(useranswer)) {
+            orderMore = false;
+            } else {
+            }    
+        }
+        displayBill();
+        System.out.println("Thank you for coming, have a good day!");    
+    }    
     
     public static void orderSummary(){
-        System.out.println("***Food Order***");
-        System.out.println("Total Buffalo Chicken Pizza's Ordered: "+numBuffChickenPizzas);
-        System.out.println("Total Beers Ordered: "+numBeers);
-        System.out.println("***************");
-    }
-    
+        if (numBuffChickenPizzas == 0 & numBeers ==0 & numMargPizzas == 0 & numTenders == 0 & numWings == 0 & numBurgers == 0 & numHotDogs == 0 & numNachos == 0 & numWaters == 0 & numSodas == 0){
+            System.out.println("***Food Order***");
+            System.out.println("You have currently not ordered anything");
+            System.out.println("***************");
+        } else {
+            System.out.println("***Food Order***");
+            System.out.println("You have ordered a total of: ");
+            System.out.println(numBuffChickenPizzas+" Buffalo Chicken Pizzas");
+            System.out.println(numMargPizzas+" Margherita Pizzas");
+            System.out.println(numTenders+" orders of Chicken Tenders");
+            System.out.println(numWings+" orders of Wings");
+            System.out.println(numBurgers+" Burgers");
+            System.out.println(numHotDogs+" Hot Dogs");
+            System.out.println(numNachos+" Nachos");
+            System.out.println(numWaters+" Waters");
+            System.out.println(numSodas+" Sodas");
+            System.out.println(numBeers+" Beers");
+            System.out.println("***************");             
+        }
+    }    
     public static void orderBeers(){
-        numBeers = numBeers + 2;
-        System.out.println("I will have "+numBeers+" Beers, please.");
+        System.out.println("How many beers would you like?");
+        numBeers2 = userinputScanner.nextInt();
+        numBeers = numBeers + numBeers2;
+        System.out.println("I will have "+numBeers2+" Beers, please.");
     }
-    
+    public static void orderMargPizza(){
+        System.out.println("How many margherita pizzas would you like?");
+        numMargPizzas2 = userinputScanner.nextInt();
+        numMargPizzas = numMargPizzas + numMargPizzas2;
+        System.out.println("I will have "+numMargPizzas2+" Margherita Pizzas, please.");
+    }
+    public static void orderTender(){
+        System.out.println("Chicken Tenders come in orders of 3, how many orders would you like?");
+        numTenders2 = userinputScanner.nextInt();
+        numTenders = numTenders + numTenders2;
+        System.out.println("I will have "+numTenders2+" orders of Tenders, please.");
+    }
+    public static void orderWing(){
+        System.out.println("Wings come in orders of 6, how many orders would you like?");
+        numWings2 = userinputScanner.nextInt();
+        numWings = numWings + numWings2;
+        System.out.println("I will have "+numWings2+" orders of Wings, please.");
+    }
+    public static void orderBurger(){
+        System.out.println("How many burgers would you like?");
+        numBurgers2 = userinputScanner.nextInt();
+        numBurgers = numBurgers + numBurgers2;
+        System.out.println("I will have "+numBurgers2+" Burgers, please.");
+    }
+    public static void orderHotDog(){
+        System.out.println("How many Hot Dogs would you like?");
+        numHotDogs2 = userinputScanner.nextInt();
+        numHotDogs = numHotDogs + numHotDogs2;
+        System.out.println("I will have "+numHotDogs2+" Hot Dogs, please.");
+    }
+    public static void orderNachos(){
+        System.out.println("How many orders of Nachos would you like?");
+        numNachos2 = userinputScanner.nextInt();
+        numNachos = numNachos + numNachos2;
+        System.out.println("I will have "+numNachos2+" orders of Nachos, please.");
+    }
+    public static void orderWater(){
+        System.out.println("How many Waters would you like?");
+        numWaters2 = userinputScanner.nextInt();
+        numWaters = numWaters + numWaters2;
+        System.out.println("I will have "+numWaters2+" Waters, please.");
+    }
+    public static void orderSoda(){
+        System.out.println("How many Sodas would you like?");
+        numSodas2 = userinputScanner.nextInt();
+        numSodas = numSodas + numSodas2;
+        System.out.println("I will have "+numSodas2+" Sodas, please.");
+    }    
     public static void orderBuffChick(){
-        numBuffChickenPizzas = numBuffChickenPizzas + 1;
-        System.out.println("I will have "+numBuffChickenPizzas+" Buffalo Chicken Pizzas, please.");
+        System.out.println("How many buffalo chicken pizzas would you like?");
+        numBuffChickenPizzas2 = userinputScanner.nextInt();
+        numBuffChickenPizzas = numBuffChickenPizzas + numBuffChickenPizzas2;
+        System.out.println("I will have "+numBuffChickenPizzas2+" Buffalo Chicken Pizzas, please.");
         
+    }    
+    public static void calcBill(){
+        subTotal = (numBuffChickenPizzas * priceBuffChick) + (numBeers * priceBeer) +(numBurgers * priceBurger) + (numHotDogs * priceHotDog) + (numMargPizzas * priceMarg) + (numNachos * priceNachos) + (numSodas * priceSoda) + (numWaters * priceWater) + (numWings * priceWings) + (numTenders * priceTender);
+        tax = subTotal * taxRate ;
+        total = subTotal + tax;        
+    }        
+    public static void displayBill(){
+        System.out.println("****Food Bill****");
+        System.out.println("You currently owe:");
+        System.out.println("Subtotal: $"+$.format(subTotal));
+        System.out.println("Tax: $"+ $.format(tax));
+        System.out.println("Total: $"+$.format(total));
+        System.out.println("**************");
     }
-    
 }
