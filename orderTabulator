@@ -113,15 +113,20 @@ public class OrderTabulator {
         }       
         calcBill();
         if (numBuffChickenPizzas == 0 & numBeers ==0 & numMargPizzas == 0 & numTenders == 0 & numWings == 0 & numBurgers == 0 & numHotDogs == 0 & numNachos == 0 & numWaters == 0 & numSodas == 0){
-            System.out.println("Would you like to order food? (Yes or No)");
-        } else {
-            System.out.println("Would you like to order more food? (Yes or No)");
-        }
+            System.out.println("Are you sure you don't want anything? (Yes (I am sure) or No (I've now changed my mind))");
             useranswer = userinputScanner.next();
-            if ("NO".equalsIgnoreCase(useranswer)) {
+            if ("yes".equalsIgnoreCase(useranswer)) {
             orderMore = false;
             } else {
-            }    
+            } 
+        } else {
+            System.out.println("Would you like to order more food? (Yes or No)");
+            useranswer = userinputScanner.next();
+            if ("NO".equalsIgnoreCase(useranswer)) {
+                orderMore = false;
+                } else {
+                } 
+            }
         }
         displayBill();
         System.out.println("Thank you for coming, have a good day!");    
