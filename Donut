@@ -1,0 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package objects1;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class Donut {
+    // member variables
+    private int percRemaining = 100;
+    public String name;
+    public boolean powdered;
+    public double diameter;
+    //method: takes in an integer representing the size of bite
+    //being taken of this donut. returns nothing
+    public void simulateEating(int percentEaten){
+        System.out.println("I'm " + name +" and " + percentEaten + "% of me is getting eaten!");
+        //subtract the bit size from the existing donut percent remaining
+        percRemaining = percRemaining - percentEaten;
+    }//close method
+    
+    //method:takes no input paramters and returns percRemaining
+    public int getPercRemaining(){
+        //very simple guts: just send bakc the value of one of the object's
+        //member variables to the calling method. this is called a "getter"
+        return percRemaining;
+    }//close method
+    
+    public void setDiameter(double cm){
+        diameter = cm;
+    }
+    
+    public double getDiameter(){
+        return diameter;
+    }
+    
+    //there's no main() method in this class
+    //we msut make this object with the new keyword inside another class
+    //in order for this class to do anything
+    
+}//close class
+
