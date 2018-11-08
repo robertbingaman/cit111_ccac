@@ -1,0 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package objects1;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class DonutLand {
+
+    public static void main(String[] args){
+        // creat a var of type Donut called firstDonut
+        Donut firstDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        firstDonut = new Donut();
+        firstDonut.name = "Charles";
+        firstDonut.powdered = true;
+        firstDonut.setDiameter(5.0);
+        firstDonut.getPercRemaining();
+        System.out.println("Donut #1's name is " +firstDonut.name);
+        if(firstDonut.powdered){
+            System.out.println(firstDonut.name+" is a powdered donut and has a diamter of "+firstDonut.getDiameter()+" centimeters");
+        }else{
+            System.out.println(firstDonut.name+" is a not powdered donut and has a diamter of "+firstDonut.getDiameter()+" centimeters");
+        }
+        firstDonut.simulateEating(20);
+        System.out.println(firstDonut.name+" has "+firstDonut.getPercRemaining()+" percent remaining to eat.");
+        
+        Donut secondDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        secondDonut = new Donut();
+        secondDonut.name = "Lucy";
+        secondDonut.powdered = false;
+        secondDonut.setDiameter(5.2);
+        secondDonut.simulateEating(0);
+        secondDonut.getPercRemaining();
+        System.out.println("Donut #2's name is " +secondDonut.name);
+        if(secondDonut.powdered){
+            System.out.println(secondDonut.name+" is a powdered donut and has a diamter of "+secondDonut.getDiameter()+" centimeters");
+        }else{
+            System.out.println(secondDonut.name+" is a not powdered donut and has a diamter of "+secondDonut.getDiameter()+" centimeters");
+        }
+        secondDonut.simulateEating(0);
+        System.out.println(secondDonut.name+" has "+secondDonut.getPercRemaining()+" percent remaining to eat.");
+    }
+}
