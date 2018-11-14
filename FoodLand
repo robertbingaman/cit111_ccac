@@ -1,0 +1,93 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package objects1;
+
+/**
+ *
+ * @author binga
+ */
+public class FoodLand {
+    
+        public static void main(String[] args){     
+        
+        final int nibble = 5; //example uses "Static," but I was not allowed to use that here
+        final int bigbite = 15;
+        
+        // create a var of type Donut called firstDonut
+        Donut firstDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        firstDonut = new Donut();
+        firstDonut.name = "Charles";
+        firstDonut.powdered = true;
+        firstDonut.setDiameter(5.0);
+        firstDonut.getPercRemaining();
+        printDonutData(firstDonut);
+        firstDonut.simulateEating(nibble);
+        printDonutData(firstDonut);
+        
+        Donut secondDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        secondDonut = new Donut();
+        secondDonut.name = "Lucy";
+        secondDonut.powdered = false;
+        secondDonut.setDiameter(5.2);
+        secondDonut.simulateEating(0);
+        secondDonut.getPercRemaining();
+        printDonutData(secondDonut);
+        secondDonut.simulateEating(bigbite);
+        printDonutData(secondDonut);
+        
+        Burrito firstBurrito;
+        firstBurrito = new Burrito();
+        firstBurrito.name = "Juan";
+        firstBurrito.bean = "Black";
+        firstBurrito.guac = true;
+        firstBurrito.getPercRemaining();
+        firstBurrito.simulateEating(bigbite);
+        printBurritoData(firstBurrito);
+        
+        BuffChick firstBuffChick;
+        firstBuffChick = new BuffChick();
+        firstBuffChick.name = "Henrieta";
+        firstBuffChick.diameter = 16;
+        firstBuffChick.ranch = true;
+        firstBuffChick.getPercRemaining();
+        firstBuffChick.simulateEating(nibble);
+        printBuffChickData(firstBuffChick);
+    }
+    
+    public static void printDonutData(Donut inputDonut) { //*****WHY DID WE HAVE TO WRITE "inputDonut"?????*****Why private vs public?
+        System.out.println("This is a Donut named " + inputDonut.name);
+        if(inputDonut.powdered){
+            System.out.println(inputDonut.name+" is a powdered donut and has a diamter of "+inputDonut.getDiameter()+" centimeters");
+        }else{
+            System.out.println(inputDonut.name+" is a not powdered donut and has a diamter of "+inputDonut.getDiameter()+" centimeters");
+        } 
+        System.out.println(inputDonut.name+" has "+inputDonut.getPercRemaining()+" percent remaining to eat.");
+    }//close printDivider
+    
+    public static void printBurritoData(Burrito inputBurrito) { //*****WHY DID WE HAVE TO WRITE "inputDonut"?????*****
+        System.out.println("This is a Burrito named " + inputBurrito.name);
+        if(inputBurrito.guac){
+            System.out.println(inputBurrito.name+" is a Burrito with guac and has "+inputBurrito.bean+" beans.");
+        }else{
+            System.out.println(inputBurrito.name+" is a Burrito without guac and has "+inputBurrito.bean+" beans.");
+        } 
+        System.out.println(inputBurrito.name+" has "+inputBurrito.getPercRemaining()+" percent remaining to eat.");
+    }//close printDivider
+    
+    public static void printBuffChickData(BuffChick inputBuffChick) { //*****WHY DID WE HAVE TO WRITE "inputDonut"?????*****Why private vs public?
+        System.out.println("This is a Buffalo Chicken Pizza named " + inputBuffChick.name);
+        if(inputBuffChick.ranch){
+            System.out.println(inputBuffChick.name+" is a Buffalo Chicken Pizza that comes with ranch and has a diamter of "+inputBuffChick.getDiameter()+" inches");
+        }else{
+            System.out.println(inputBuffChick.name+" is a Buffalo Chicken Pizza that does not comes with ranch and has a diamter of "+inputBuffChick.getDiameter()+" inches");
+        } 
+        System.out.println(inputBuffChick.name+" has "+inputBuffChick.getPercRemaining()+" percent remaining to eat.");
+    }//close printDivider
+}
