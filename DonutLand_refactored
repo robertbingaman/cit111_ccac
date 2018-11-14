@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package objects1;
+
+/**
+ *
+ * @author binga
+ */
+public class DonutLand_refactored {
+    
+    public static void main(String[] args){     
+        
+        final int nibble = 5; //example uses "Static," but I was not allowed to use that here
+        final int bigbite = 15;
+        
+        // create a var of type Donut called firstDonut
+        Donut firstDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        firstDonut = new Donut();
+        firstDonut.name = "Charles";
+        firstDonut.powdered = true;
+        firstDonut.setDiameter(5.0);
+        firstDonut.getPercRemaining();
+        printDonutData(firstDonut);
+        firstDonut.simulateEating(nibble);
+        printDonutData(firstDonut);
+        
+        Donut secondDonut;
+        //instantiate a Donut object and store
+        //its location in firstdonut
+        secondDonut = new Donut();
+        secondDonut.name = "Lucy";
+        secondDonut.powdered = false;
+        secondDonut.setDiameter(5.2);
+        secondDonut.simulateEating(0);
+        secondDonut.getPercRemaining();
+        printDonutData(secondDonut);
+        secondDonut.simulateEating(bigbite);
+        printDonutData(secondDonut);
+    }
+    
+    public static void printDonutData(Donut inputDonut) { //*****WHY DID WE HAVE TO WRITE "inputDonut"?????*****Why private vs public?
+        System.out.println("This is a Donut named " + inputDonut.name);
+        if(inputDonut.powdered){
+            System.out.println(inputDonut.name+" is a powdered donut and has a diamter of "+inputDonut.getDiameter()+" centimeters");
+        }else{
+            System.out.println(inputDonut.name+" is a not powdered donut and has a diamter of "+inputDonut.getDiameter()+" centimeters");
+        } 
+        System.out.println(inputDonut.name+" has "+inputDonut.getPercRemaining()+" percent remaining to eat.");
+    }//close printDonutData
+    
+}
