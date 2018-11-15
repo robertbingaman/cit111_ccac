@@ -7,43 +7,49 @@ package objects1;
 
 /**
  *
- * @author binga
+ * @author robert.bingaman
  */
 public class DonutLand_refactored {
     
-    public static void main(String[] args){     
+     public static void main(String[] args){     
         
         final int nibble = 5; //example uses "Static," but I was not allowed to use that here
         final int bigbite = 15;
         
         // create a var of type Donut called firstDonut
-        Donut firstDonut;
+        SizedDonut firstDonut;
         //instantiate a Donut object and store
         //its location in firstdonut
-        firstDonut = new Donut();
+        firstDonut = new SizedDonut();
         firstDonut.name = "Charles";
         firstDonut.powdered = true;
         firstDonut.setDiameter(5.0);
         firstDonut.getPercRemaining();
-        printDonutData(firstDonut);
-        firstDonut.simulateEating(nibble);
-        printDonutData(firstDonut);
-        
-        Donut secondDonut;
+                
+        SizedDonut secondDonut;
         //instantiate a Donut object and store
         //its location in firstdonut
-        secondDonut = new Donut();
+        secondDonut = new SizedDonut();
         secondDonut.name = "Lucy";
         secondDonut.powdered = false;
         secondDonut.setDiameter(5.2);
-        secondDonut.simulateEating(0);
         secondDonut.getPercRemaining();
-        printDonutData(secondDonut);
-        secondDonut.simulateEating(bigbite);
-        printDonutData(secondDonut);
+                
+        AngelBear firstAngelBear = new AngelBear();
+        firstAngelBear.color = "white";
+        firstAngelBear.halo = false;
+        firstAngelBear.wings = true;
+        firstAngelBear.num_limbs = 4;
+        firstAngelBear.name = "Loraine";
+        firstAngelBear.setBiteSizeInPercent(nibble);
+        displayAngelBearStat(firstAngelBear);
+        System.out.println("Perc remaining before eating: " + firstDonut.getPercRemaining());
+        firstAngelBear.eatDonut(firstDonut);
+        System.out.println("Perc remaining before eating: " + firstDonut.getPercRemaining());
+        
     }
     
-    public static void printDonutData(Donut inputDonut) { //*****WHY DID WE HAVE TO WRITE "inputDonut"?????*****Why private vs public?
+    public static void printDonutData(SizedDonut inputDonut) { //********Why private vs public?
         System.out.println("This is a Donut named " + inputDonut.name);
         if(inputDonut.powdered){
             System.out.println(inputDonut.name+" is a powdered donut and has a diamter of "+inputDonut.getDiameter()+" centimeters");
@@ -53,4 +59,23 @@ public class DonutLand_refactored {
         System.out.println(inputDonut.name+" has "+inputDonut.getPercRemaining()+" percent remaining to eat.");
     }//close printDonutData
     
+    public static void displayAngelBearStat(AngelBear AB){
+        System.out.println("*****Angel Bear Stats******");
+        System.out.println(AB.name +" is a " +AB.color + " Angel Bear who has " +AB.num_limbs+" limbs, and takes bites that are "+AB.getBiteSizeInPercent()+" percent of the total.");
+        if (AB.halo&&AB.wings){
+                System.out.println(AB.name+" has a halo and wings that help her fly.");
+        } else {
+            if (AB.halo){
+                System.out.println(AB.name+" has a halo, but no wings, so she cannot fly.");
+            } else{
+                if (AB.wings){
+                System.out.println(AB.name+" does not have a halo, but has wings, so she can fly.");                 
+                } else {
+                System.out.println(AB.name+" does not have a halo or wings... how is she an Angel Bear?");             
+                    
+                }//close final else
+            }//close second else
+        }//close first else    
+        System.out.println("*****************");
+    }//close Angel Bear stats method    
 }
