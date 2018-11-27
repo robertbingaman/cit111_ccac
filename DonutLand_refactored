@@ -4,17 +4,21 @@
  * and open the template in the editor.
  */
 package objects1;
-
+import java.util.Scanner;
 /**
  *
- * @author robert.bingaman
+ * @author binga
  */
 public class DonutLand_refactored {
     
-     public static void main(String[] args){     
+        public static void main(String[] args){     
         
         final int nibble = 5; //example uses "Static," but I was not allowed to use that here
         final int bigbite = 15;
+        boolean eatmore = true;
+        
+        Scanner userInputScanner;
+        userInputScanner = new Scanner(System.in);
         
         // create a var of type Donut called firstDonut
         SizedDonut firstDonut;
@@ -34,6 +38,7 @@ public class DonutLand_refactored {
         secondDonut.powdered = false;
         secondDonut.setDiameter(5.2);
         secondDonut.getPercRemaining();
+        
                 
         AngelBear firstAngelBear = new AngelBear();
         firstAngelBear.color = "white";
@@ -42,13 +47,23 @@ public class DonutLand_refactored {
         firstAngelBear.num_limbs = 4;
         firstAngelBear.name = "Loraine";
         firstAngelBear.setBiteSizeInPercent(nibble);
+        
+        printDonutData(firstDonut);
         displayAngelBearStat(firstAngelBear);
+        
+        while (eatmore){
         System.out.println("Perc remaining before eating: " + firstDonut.getPercRemaining());
         firstAngelBear.eatDonut(firstDonut);
-        System.out.println("Perc remaining before eating: " + firstDonut.getPercRemaining());
-        
-    }
-    
+        System.out.println("Perc remaining after eating: " + firstDonut.getPercRemaining());
+        System.out.println("Would " + firstAngelBear.name + " like to eat more of " + firstDonut.name + "?");
+        if("yes".equalsIgnoreCase(userInputScanner.next())){
+        } else{
+            eatmore = false;
+            printDonutData(firstDonut);
+            }
+        }
+        } 
+
     public static void printDonutData(SizedDonut inputDonut) { //********Why private vs public?
         System.out.println("This is a Donut named " + inputDonut.name);
         if(inputDonut.powdered){
@@ -77,5 +92,5 @@ public class DonutLand_refactored {
             }//close second else
         }//close first else    
         System.out.println("*****************");
-    }//close Angel Bear stats method    
+    }
 }
