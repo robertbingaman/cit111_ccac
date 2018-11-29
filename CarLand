@@ -1,0 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chunk3_module4;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class CarLand {
+    public static void main(String[] args){
+        
+        Car deLorean = new Car();
+        deLorean.year = 1983;
+        deLorean.makeModel = "DeLorean DMC-12";
+        
+        displayCarStats(deLorean);
+        
+        deLorean.startEngine();
+        deLorean.accelerate(88);
+        deLorean.decelerate(12);
+        displayCarStats(deLorean);
+        deLorean.stopEngine();
+        displayCarStats(deLorean);
+        
+        Car hiLux = new Car();
+        hiLux.year = 1985;
+        hiLux.makeModel = "Toyota Hi-Lux Pickup Deluxe 4x4 Xtracab";
+        
+        displayCarStats(hiLux);
+        
+        hiLux.startEngine();
+        hiLux.accelerate(55);
+        displayCarStats(hiLux);
+        
+        Car belAir = new Car();
+        belAir.makeModel = "Chevrolet Bel Air";
+        belAir.year = 1954;
+        
+        displayCarStats(belAir);
+        belAir.startEngine();
+        belAir.accelerate(89);
+        displayCarStats(belAir);
+        belAir.decelerate(70);
+        displayCarStats(belAir);
+    }
+    
+    public static void displayCarStats(Car anyCarObject){
+        System.out.println("***** STATS *****");
+        System.out.println(anyCarObject.year + " " +anyCarObject.makeModel);
+        System.out.println("Engine running? " + anyCarObject.checkEngineStatus());
+        System.out.println("Current Speed " + anyCarObject.getCurrentSpeed());
+        System.out.println("Current Gear " + anyCarObject.getCurrentGear());
+        System.out.println("******************");
+        
+    }
+    
+}
