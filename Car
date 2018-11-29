@@ -1,0 +1,84 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package chunk3_module4;
+
+/**
+ *
+ * @author robert.bingaman
+ */
+public class Car {
+    public int year;
+    public String makeModel;
+    private boolean isEngineRunning;
+    private double speed;
+    private int gear;
+    
+    
+    public void startEngine(){
+        isEngineRunning = true;
+        System.out.println("...crank...crank...vroom!");
+    }
+    
+    public void stopEngine(){
+        isEngineRunning = false;
+        speed = 0;
+        System.out.println("...grblll....shldunk");
+    }
+    
+    public boolean checkEngineStatus(){
+        return isEngineRunning;
+    }
+    
+    public double getCurrentSpeed(){
+        return speed;
+    }
+    
+    public double accelerate(int mphIncrease){
+        speed = speed + mphIncrease;
+        if (speed > 200){
+            System.out.println("I can't go any faster!!!!");
+            speed = 200;
+        }
+        return speed;
+    }
+    
+    public double decelerate(int mphDecrease){
+        speed = speed - mphDecrease;
+        if(speed < 0){
+            System.out.println("I can't go any slower!");
+            speed = 0;
+        }//close if
+        return speed;//return has to be after logical test. If returning value before, the method has nothing to reference.
+    }//close decelerate method
+    
+    public int getCurrentGear(){
+        return gear;
+    }
+    
+    public void calcGear(double speed){
+        if(speed == 0){
+            gear = 0;
+        } else{
+            if (speed<=0 && speed<10) {
+                gear = 1;                
+            } else {
+                if (speed <= 10 && speed <20){
+                    gear = 2;
+                } else {
+                    if (speed <= 20 && speed <40){
+                        gear = 3;
+                    } else {
+                        if (speed <= 40 && speed <60){
+                        gear = 4;                          
+                        } else {
+                            gear = 5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
