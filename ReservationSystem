@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package finalProject;
+
+import java.util.Scanner;
+/**
+ *
+ * @author binga
+ */
+public class ReservationSystem {
+    
+    public static Scanner userInputScanner = new Scanner(System.in);//create scanner object for later use
+
+    public static void main(String[] args){//open main method
+        Room room1;//create a variable called room1
+        Room room2;//create a variable called room2
+        Room room3;//create a variable called room3
+        Room room4;//create a variable called room4
+         
+        room1 = new Room(); //instantiate a new room object called room1
+        room1.setNumber(101);//setting room number to 101
+        room1.setBeds(1);//setting 1 bed
+        room1.setCap(2);//setting max capacity of 2 people
+        room1.setPrice(99.99);//setting price of $99.99
+        room1.setSize("King");//setting the 1 bed to King size
+        room1.setTV(true);//setting that the room has a TV
+        
+        room2 = new Room(); //instantiate a new room object called room2
+        room2.setNumber(102);//setting room number to 102
+        room2.setBeds(2);//setting 2 beds
+        room2.setCap(4);//setting max capacity of 4 people
+        room2.setPrice(99.99);//setting price of $99.99
+        room2.setSize("Queen");//setting the 2 beds to Queen size
+        room2.setTV(true);//setting that the room has a TV
+        
+        room3 = new Room(); //instantiate a new room object called room3
+        room3.setNumber(103);//setting room number to 103
+        room3.setBeds(2);//setting 2 beds
+        room3.setCap(4);//setting max capacity of 4 people
+        room3.setPrice(89.99);//setting price of $99.99
+        room3.setSize("Queen");//setting the 2 beds to Queen size
+        room3.setTV(false);//setting that the room does not have a TV
+        
+        room4 = new Room(); //instantiate a new room object called room4
+        room4.setNumber(104);//setting room number to 104
+        room4.setBeds(1);//setting 1 bed
+        room4.setCap(2);//setting max capacity of 2 people
+        room4.setPrice(89.99);//setting price of $99.99
+        room4.setSize("King");//setting the 1 bed to King size
+        room4.setTV(false);//setting that the room does not have a TV
+        
+        
+    }//close main method
+    
+    public void displayRoomStats(Room anyRoom){
+        System.out.println("Room "+ anyRoom.getNumber(anyRoom)+" has " + anyRoom.getBeds(anyRoom) + " "+anyRoom.getSize(anyRoom)+" bed(s) and a maximum capacity of "+anyRoom.getCap(anyRoom)+".");//display attributes of the room object in the form of text strings.
+        if(anyRoom.hasTV(anyRoom)){//change message based on whether the room has  TV or not
+            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" has a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
+        }//close if 
+        else {//message if the room does not have a TV
+            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" does not have a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
+        }//close else
+    }//close method
+    
+}
