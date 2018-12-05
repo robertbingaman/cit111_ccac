@@ -1,0 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package finalProject;
+ 
+
+
+/**
+ *
+ * @author binga
+ */
+public class Reservation {
+    
+    java.time.LocalDate date;//create a variable of type local date to match a date to the reservation
+    int resNum;//create a variable of type of int for the reservation number identifier
+    Room room;//create a variable of type room to match a room to the reservation
+    int guests;//create a variable of type int to store the number of guests on th reservation
+    int lastResNum = 0;//create a variable to help sequence reservation numbers in class createResNum()
+    
+    public void createResNum(){//create method to set reservation number
+        resNum = lastResNum + 1;//generate a reservation number one higher than the last reservation number
+        lastResNum = resNum;//redefine the latest reservation number
+    }//close method
+    
+    public void setGuests(int a){//create method to set number of guests on reservation
+        guests = a;//defining the number of guests
+    }
+    
+    public 
+}
