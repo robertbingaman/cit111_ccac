@@ -6,20 +6,60 @@
 package finalProject;
 
 import java.util.Scanner;
+
 /**
  *
- * @author binga
+ * @author robert.bingaman
  */
 public class ReservationSystem {
+    public static Scanner userInputScanner = new Scanner(System.in);//create scanner object for user interaction
+    static Reservation[] reservations;//create an array to store reservations in
+    static Room room1;//create a variable called room1
+    static Room room2;//create a variable called room2
+    static Room room3;//create a variable called room3
+    static Room room4;//create a variable called room4   
+    static int i = -1;//counter to use to determine if program can handle any additional reservations or not
     
-    public static Scanner userInputScanner = new Scanner(System.in);//create scanner object for later use
-
     public static void main(String[] args){//open main method
-        Room room1;//create a variable called room1
-        Room room2;//create a variable called room2
-        Room room3;//create a variable called room3
-        Room room4;//create a variable called room4
-         
+        createRooms();//instantiate all of the room objects that will be used in this program
+        reservations = new Reservation[20];//instantiate the array to store reservations in (maximum 20 for this exercise)
+        System.out.println("Welcome to the Bing Hotel, what would you like to do?");
+        switch(userInputScanner.nextInt()){
+            case 1: 
+                createReservation();//need to add methods related to room selection
+            case 2: 
+                //insert reservation details method
+                break;
+            case 3: 
+                //insert reservation cancellation method
+                break;
+            case 4:
+                break;
+        }
+                
+    }//close main method
+    
+    public static void displayRoomStats(Room anyRoom){
+        System.out.println("Room "+ anyRoom.getNumber(anyRoom)+" has " + anyRoom.getBeds(anyRoom) + " "+anyRoom.getSize(anyRoom)+" bed(s) and a maximum capacity of "+anyRoom.getCap(anyRoom)+".");//display attributes of the room object in the form of text strings.
+        if(anyRoom.hasTV(anyRoom)){//change message based on whether the room has  TV or not
+            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" has a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
+        }//close if 
+        else {//message if the room does not have a TV
+            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" does not have a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
+        }//close else
+    }//close method
+    
+    public static void createReservation(){//method to create a new reservation
+        i = i +1;
+        if (i<reservations.length){//if statement to determine if the array can handle any more reservations or not
+            reservations[i] = new Reservation();//instantiate a new reservation and store it in array at bin "i"
+            reservations[i].createResNum();//establishing the reservation number for our new reservation
+        }else{
+            System.out.println("We cannot handle any more reservations at this time, sorry.");
+        }      
+    }
+    
+    public static void createRooms(){
         room1 = new Room(); //instantiate a new room object called room1
         room1.setNumber(101);//setting room number to 101
         room1.setBeds(1);//setting 1 bed
@@ -51,18 +91,13 @@ public class ReservationSystem {
         room4.setPrice(89.99);//setting price of $99.99
         room4.setSize("King");//setting the 1 bed to King size
         room4.setTV(false);//setting that the room does not have a TV
-        
-        
-    }//close main method
+    }
     
-    public void displayRoomStats(Room anyRoom){
-        System.out.println("Room "+ anyRoom.getNumber(anyRoom)+" has " + anyRoom.getBeds(anyRoom) + " "+anyRoom.getSize(anyRoom)+" bed(s) and a maximum capacity of "+anyRoom.getCap(anyRoom)+".");//display attributes of the room object in the form of text strings.
-        if(anyRoom.hasTV(anyRoom)){//change message based on whether the room has  TV or not
-            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" has a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
-        }//close if 
-        else {//message if the room does not have a TV
-            System.out.println("Additionally, room " + anyRoom.getNumber(anyRoom)+" does not have a TV and costs $" + anyRoom.getPrice(anyRoom)+" per night (plus tax).");
-        }//close else
-    }//close method
-    
+    public static void displayMenu(){
+        System.out.println("Please select from the menu below by pressing the corresponding number");
+        System.out.println("1 - Create a new reservation");
+        System.out.println("2 - Check reservation details");
+        System.out.println("3 - Cancel reservation");
+        System.out.println("4 - Leave Hotel");
+    }
 }
