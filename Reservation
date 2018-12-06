@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package finalProject;
- 
-
 
 /**
  *
- * @author binga
+ * @author robert.bingaman
  */
 public class Reservation {
-    
     java.time.LocalDate date;//create a variable of type local date to match a date to the reservation
     int resNum;//create a variable of type of int for the reservation number identifier
     Room room;//create a variable of type room to match a room to the reservation
@@ -24,9 +21,23 @@ public class Reservation {
         lastResNum = resNum;//redefine the latest reservation number
     }//close method
     
+    public int getResNum(){//create method to return reservation number by inputting an array member
+        return resNum;//returning reservation number        
+    }//close method
+    
     public void setGuests(int a){//create method to set number of guests on reservation
         guests = a;//defining the number of guests
-    }
+    }//close method
     
-    public 
+    public int getGuests(){//create method to return number of guests on the reservation object
+        return guests;//returning the number of guests on the reservation
+    }//close method
+    
+    public void setDate(java.time.LocalDate a){//create method to store date of the reservation
+        date = a;//storing the date in the date variable of the Reservation object
+    }//close method
+    
+    public java.time.LocalDate getDate(){//create method to return date of the reservation
+        return date;//returning the date of the reservation object
+    }//close method
 }
