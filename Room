@@ -5,15 +5,13 @@
  */
 package finalProject;
 
-
 import java.util.Scanner;
 
 /**
  *
- * @author binga
+ * @author robert.bingaman
  */
-public class Room {//blueprint class of a Room object
-    
+public class Room {
     int roomNumber;//number for the room object
     int numBeds;//number of beds in the hotel room
     boolean tv;//if the room has a TV it will be true, if false, no TV
@@ -73,3 +71,4 @@ public class Room {//blueprint class of a Room object
         return price;//returns the price of the hotel room
     }//close method
 }
+
