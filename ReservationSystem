@@ -187,16 +187,26 @@ public class ReservationSystem {
     }//close method
     
     public static void viewReservationDetails(int t){//create method to display information about the reservation
-        System.out.println("*********Reservation Summary*************");
-        System.out.println("Reservation number " + reservations[t-1].getResNum()+" is for "+reservations[t-1].getDate()+".");
-        System.out.println("This reservation is for room " + reservations[t-1].room.getNumber(reservations[t-1].room)+ " and is for " + reservations[t-1].getGuests()+ " guests.");
-        System.out.println("The cost of the reservation is $" + reservations[t-1].room.getPrice(reservations[t-1].room)+ " before taxes and fees.");
-        System.out.println("You can view more about our rooms from the main menu.");
-        System.out.println("*****************************************************");
+        if(reservations[t-1] == null){//checking to see if reservation exists so program does not break. Reservation number will always be 1 integer higher than location on array.
+            System.out.println("Sorry, this reservation does not exist in our system.");//error message to the user
+            System.out.println("****Sending you back to the main menu****");
+        } else {//commands if object does not exist
+            System.out.println("*********Reservation Summary*************");
+            System.out.println("Reservation number " + reservations[t-1].getResNum()+" is for "+reservations[t-1].getDate()+".");
+            System.out.println("This reservation is for room " + reservations[t-1].room.getNumber(reservations[t-1].room)+ " and is for " + reservations[t-1].getGuests()+ " guests.");
+            System.out.println("The cost of the reservation is $" + reservations[t-1].room.getPrice(reservations[t-1].room)+ " before taxes and fees.");
+            System.out.println("You can view more about our rooms from the main menu.");
+            System.out.println("*****************************************************");    
+        }//close else
     }//method to display information about a reservation
     
     public static void cancelReservation(int t){//method to clear bin on array that contains reservation object
-        reservations[t-1] = null;//making the locaion on the area(and hence the object) null and cleared from memory
-        System.out.println("Reservation number " + t + " has been canceled. We hope to have you back soon!");
+        if(reservations[t-1] == null){
+            System.out.println("Sorry, this reservation does not exist in our system.");//error message to the user
+            System.out.println("****Sending you back to the main menu****");
+        } else {
+            reservations[t-1] = null;//making the locaion on the area(and hence the object) null and cleared from memory
+            System.out.println("Reservation number " + t + " has been canceled. We hope to have you back soon!");//message to the user
+        }
     }
-}//close 
+}//close class
