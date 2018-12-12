@@ -71,4 +71,3 @@ public class Room {
         return price;//returns the price of the hotel room
     }//close method
 }
-
