@@ -137,7 +137,7 @@ public class ReservationSystem {
     }
     
     public static void roominfo(){
-        System.out.println("Which room would you like to hear more information about? Please type a number from 1 to 4 and hit enter.");
+        System.out.println("Here at the Bing Hotel, we have four rooms. Which room would you like to hear more information about? Please type a number from 1 to 4 and hit enter.");
         switch(userInputScanner.nextInt()){//switch statement to select a room
             case 1:
                 displayRoomStats(room1);//display room stats for room #1
